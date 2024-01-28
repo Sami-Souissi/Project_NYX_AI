@@ -1,4 +1,3 @@
-# app.py
 from typing import List, Union
 import re
 import sys
@@ -26,28 +25,7 @@ def init_page() -> None:
     st.header("NYX AI")
     image_url = "./logo.png" 
     st.sidebar.image(image_url, use_column_width=True, caption="Project NYX AI By Sami Souissi", output_format="auto")
-    # st.sidebar.markdown(
-    #     f"""
-    #     <style>
-    #     section[data-testid="stSidebar"] {{
-    #         min-width: 70px !important;  # Set the minimum width to your default value
-    #         max-width: 1000px !important; # Set the maximum width based on your requirement
-    #         resize: horizontal;           # Allow horizontal resizing
-    #         overflow: hidden;             # Hide overflow content
-    #         transition: all 0.3s;         # Add transition for smoother resizing
-    #     }}
 
-    #     section[data-testid="stPageContainer"] {{
-    #         margin-left: 0;               # Reset margin to allow main content to fill the void
-    #         transition: all 0.3s; 
-    #         display: flex;
-    #         justify-content: center;      # Center the content horizontally
-    #         align-items: center;          # Add transition for smoother resizing
-    #     }}
-    #     </style>
-    #     """,
-    #     unsafe_allow_html=True
-    # )
     st.sidebar.title("Options")
 
 
@@ -84,25 +62,7 @@ def init_messages() -> None:
         st.session_state.costs = []
     
 
-# def select_llm() -> Union[ChatOpenAI, LlamaCpp]:
-#     model_name = st.sidebar.radio("Choose LLM:",
-#                                   ("active",
-#                                    "llama-2-7b-chat.ggmlv3.q2_K"))
-#     temperature = st.sidebar.slider("Temperature:", min_value=0.0,
-#                                     max_value=1.0, value=0.0, step=0.01)
-#     if model_name.startswith("gpt-"):
-#         return ChatOpenAI(temperature=temperature, model_name=model_name)
-#     elif model_name.startswith("llama-2-"):
-#         callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
-#         return LlamaCpp(
-#             model_path=f"./models/{model_name}.bin",
-#             temperature= 0.5,
-#             max_length= 2000,
-#             top_p= 1,
-#             n_gpu_layers=64,
-#             callback_manager=callback_manager,
-#             verbose=True,  # True
-#         )
+
 def select_llm() -> AutoModelForCausalLM:
     with st.sidebar.expander("Model Selection"):
       model_id = st.radio("Choose LLM:",
@@ -140,16 +100,6 @@ def select_llm() -> AutoModelForCausalLM:
     )
     
     return llm
-
-
-
-# def get_answer(llm, messages) -> tuple[str, float]:
-#     if isinstance(llm, ChatOpenAI):
-#         with get_openai_callback() as cb:
-#             answer = llm(messages)
-#         return answer.content, cb.total_cost
-#     if isinstance(llm, LlamaCpp):
-#         return llm(llama_v2_prompt(convert_langchainschema_to_dict(messages))), 0.0
 
 
 
@@ -279,8 +229,6 @@ def disable():
 
 
 def execute_docker_script(input_text):
-    # Assuming udocker is a function that takes input
-    # Replace the following line with the actual udocker command
     command = f"udocker {input_text}"
     
     # Use subprocess to run the command and capture the output
@@ -343,7 +291,6 @@ def main() -> None:
       errorlog1 = "Failed to move logs_backup.txt to backup/"
       st.error(errorlog1,icon="🚨")
       # Run the command and capture the output
-      # command = 'yes Y | shell-genie ask "I encountered the Docker error Failed to connect to localhost port 8080: Connection refused while trying to remove a container. What command can I use to resolve this issue in the Linux operating system?"'
       command = f'yes Y | shell-genie ask "Fix {errorlog1}"'
       command_output = subprocess.check_output(command, shell=True, text=True)
 
@@ -378,19 +325,6 @@ def main() -> None:
         st.session_state.disabled = False
 
 
-    
-    
-
-    # Add text cards with clickable functionality in the sidebar
-    # if st.sidebar.button("Execute Script 1"):
-    #   st.session_state.disabled = True
-
-    # script_2 = """
-    # # Your second script content here
-    # print("Executing Script 2")
-    # """
-    # if st.sidebar.button("Execute Script 2"):
-    #     execute_script(script_2)
         
    
     # Supervise user input
@@ -432,7 +366,6 @@ def main() -> None:
 
       try:
           # Run udocker with the extracted input text
-          # udocker_result = subprocess.run(['udocker', f'("{input_text}")'], capture_output=True, text=True, check=True)
           udocker = udocker_init()
           # Run udocker with the provided command and store the output in st.session_state.messages
           udocker_output = udocker(input_text)
