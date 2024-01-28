@@ -12,6 +12,9 @@ Project NYX AI is a powerful prototype designed for ChatOps functionality, enabl
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Sami-Souissi/Project_NYX_AI/blob/main/Project_NYX_AI.ipynb)
 
+<p align="center">
+  <img src="Assets/demo.png" alt="NYX AI Demo" width="100%">
+</p>
 
 ## Features
 1. **Natural Language Understanding:** NYX AI utilizes advanced natural language processing algorithms to interpret commands expressed in everyday language, ensuring a user-friendly experience for DevOps engineers.
