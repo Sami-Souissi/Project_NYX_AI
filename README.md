@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="logo.png" alt="NYX AI Logo" width="50%">
+  <img src="logo.png" alt="NYX AI Logo" width="30%">
 </p>
 
 <div align="center">
