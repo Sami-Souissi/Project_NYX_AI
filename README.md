@@ -2,7 +2,10 @@
   <img src="logo.png" alt="NYX AI Logo" width="50%">
 </p>
 
+<div align="center">
+
 # Project NYX AI
+</div>
 
 ## Description
 Project NYX AI is a powerful prototype designed for ChatOps functionality, enabling the interpretation of natural language commands and their execution on the mainframe. This AI system serves as an invaluable assistant for DevOps engineers, providing helpful hints, explanations, and the ability to execute commands directly from the chat application.
@@ -30,10 +33,13 @@ To initiate the NYX AI prototype, follow these steps:
 3. Interact with NYX AI by entering natural language commands or using predefined scenarios.
 
 ## Scenarios
-### Scenario 1
+### Scenario 1 
+#### Passive Mode (NYX Can Only assist the Devs)
+
 If you encounter the Docker error 'Error response from daemon: conflict: unable to remove container', NYX AI can help you by providing a resolution command. Click the "Scenario 1" button to simulate this scenario.
 
 ### Scenario 2
+#### Active Mode (NYX Interacts directly with the system to solve the issue when the devs are away)
 Simulate a scenario where NYX AI assists in resolving an error related to moving logs. This scenario involves backing up logs, creating a backup directory, and executing a command to fix the issue. Click the "Scenario 2" button to trigger this simulation.
 
 ## Options
