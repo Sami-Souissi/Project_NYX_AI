@@ -3,44 +3,42 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "runArgs": ["--name", "Project_NYX_AI"],
+  "runArgs": [
+    "--name",
+    "Project_NYX_AI"
+  ],
   "mounts": [
-    "source=${localEnv:SSH_AUTH_SOCK},target=/ssh-agent,type=bind"
+    {
+      "type": "bind",
+      "source": "${localEnv:HOME}/.ssh",
+      "target": "/root/.ssh",
+      "readonly": true
+    }
   ],
   "remoteEnv": {
-    "SSH_AUTH_SOCK": "/ssh-agent",
     "UV_LINK_MODE": "copy"
   },
   "postCreateCommand": "uv sync --locked",
   "customizations": {
     "vscode": {
       "extensions": [
-        // Python
         "ms-python.python",
         "ms-python.vscode-pylance",
         "ms-python.debugpy",
         "charliermarsh.ruff",
         "ms-python.mypy-type-checker",
-
-        // Git
         "eamodio.gitlens",
         "mhutchie.git-graph",
         "donjayamanne.githistory",
-
-        // Editor quality of life
         "usernamehw.errorlens",
         "streetsidesoftware.code-spell-checker",
         "gruntfuggly.todo-tree",
         "oderwat.indent-rainbow",
         "mechatroner.rainbow-csv",
-
-        // Files & formatting
         "tamasfe.even-better-toml",
         "redhat.vscode-yaml",
         "ms-azuretools.vscode-docker",
         "mutantdino.resourcemonitor",
-
-        // AI
         "github.copilot",
         "github.copilot-chat"
       ],
@@ -49,10 +47,17 @@
         "python.terminal.activateEnvironment": false,
         "terminal.integrated.defaultProfile.linux": "zsh",
         "editor.formatOnSave": true,
-        "editor.rulers": [88],
+        "editor.rulers": [
+          88
+        ],
         "errorLens.enabled": true,
         "gitlens.codeLens.enabled": true,
-        "todo-tree.general.tags": ["TODO", "FIXME", "HACK", "NOTE"]
+        "todo-tree.general.tags": [
+          "TODO",
+          "FIXME",
+          "HACK",
+          "NOTE"
+        ]
       }
     }
   }
